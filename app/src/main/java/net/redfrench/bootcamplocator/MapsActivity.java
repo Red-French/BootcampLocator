@@ -24,8 +24,7 @@ public class MapsActivity extends FragmentActivity {
 
 
 //        FragmentManager fragMgr = getSupportFragmentManager();  // opted not to use a variable for frag manger as done in DevRadio
-        MainFragment mainFragment = (MainFragment)getSupportFragmentManager().findFragmentById(R.id.container_main);  // cast returned fragment into a MainFragment
-                                                                                                   // because a regular fragment will be returned
+        MainFragment mainFragment = (MainFragment)getSupportFragmentManager().findFragmentById(R.id.container_main);
 
         if (mainFragment == null) {  // if the fragment has previously loaded, it will be in memory. Otherwise, fragment will be null.
             mainFragment = MainFragment.newInstance(); // new MainFragment will be created in newInstance method
