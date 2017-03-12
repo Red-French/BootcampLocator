@@ -5,7 +5,7 @@
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="net.redfrench.bootcamplocator.MapsActivity">
+        tools:context="net.redfrench.bootcamplocator.activities.MapsActivity">
 
         <FrameLayout
             android:layout_width="match_parent"
