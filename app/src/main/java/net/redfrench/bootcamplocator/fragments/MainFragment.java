@@ -3,6 +3,7 @@ package net.redfrench.bootcamplocator.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import net.redfrench.bootcamplocator.R;
 public class MainFragment extends Fragment implements OnMapReadyCallback {  // onMapReadyCallback is an interface
 
     private GoogleMap mMap;  // create a variable of a Google Map. This is the map that can now be accessed and used.
+    private MarkerOptions mapMarker;
 
     public MainFragment() {
         // Required empty public constructor
@@ -74,9 +76,26 @@ public class MainFragment extends Fragment implements OnMapReadyCallback {  // o
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));  // appear on marker hover
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));  // move the map to the location specified above
+        // BOILERPLATE
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));  // appear on marker hover
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));  // move the map to the location specified above
+
+        LatLng franklin = new LatLng(35.9251, -86.8689);
+        mMap.addMarker(new MarkerOptions().position(franklin).title("Franklin, TN"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(franklin));
+
+    }
+
+    public void setMapMarker(LatLng latLng) {
+        Log.v("Log", "setMapMarker()");
+        Log.v("LOG", latLng.latitude + " " + latLng.longitude);
+        if (mapMarker == null) {  // if first time
+            mapMarker = new MarkerOptions().position(latLng).title("Current location");
+            mMap.addMarker(mapMarker); // add marker to map
+        }
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));  // the 2nd parameter is the zoom level
     }
 
 }
